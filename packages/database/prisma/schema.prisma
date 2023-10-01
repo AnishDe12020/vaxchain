@@ -9,3 +9,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id         String  @id @default(uuid())
+  email      String  @unique
+  name       String?
+  providerId String  @unique
+  image      String?
+  role       Role?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  MANUFACTURER
+  DISTRIBUTOR
+  DOCTOR
+}
