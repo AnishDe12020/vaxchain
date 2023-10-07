@@ -5,18 +5,19 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { getSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const UserAuthForm = async ({ className, ...props }: UserAuthFormProps) => {
+const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const session = getSession();
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = () => {
     setIsLoading(true);
     try {
-      signIn("google", { callbackUrl: "http://localhost:3000/role" });
+      signIn("google", {
+        callbackUrl: "/role?auth=true",
+      });
     } catch (error) {
       console.error(error);
     } finally {

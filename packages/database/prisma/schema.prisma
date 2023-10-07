@@ -17,6 +17,9 @@ model User {
   providerId String  @unique
   image      String?
   role       Role?
+  isAdmin    Boolean @default(false)
+  publicKey  String?
+  ePvtKey    String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
