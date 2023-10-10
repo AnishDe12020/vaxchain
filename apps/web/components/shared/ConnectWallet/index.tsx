@@ -68,7 +68,7 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
         await signIn("credentials", {
           publicKey: publicKey?.toBase58(),
           signature: base58.encode(signedMessage),
-          callbackUrl: `${window.location.origin}/${window.location.pathname}`,
+          callbackUrl: `${window.location.origin}/role`,
         })
       } catch (e) {
         console.error(e)

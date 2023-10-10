@@ -1,15 +1,6 @@
-import Link from "next/link"
-import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth/next"
-
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import ModeToggle from "@/components/ui/mode-toggle"
 import UserAuthForm from "@/components/auth/user-auth-form"
 
 export const Auth = async () => {
-  const session = await getServerSession()
-
   return (
     <>
       <div className="container relative hidden h-[900px] flex-col items-center justify-center md:grid">
