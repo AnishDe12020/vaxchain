@@ -11,22 +11,16 @@ datasource db {
 }
 
 model User {
-  id         String  @id @default(uuid())
-  email      String  @unique
-  name       String?
-  providerId String  @unique
-  image      String?
-  role       Role?
-  isAdmin    Boolean @default(false)
-  publicKey  String?
-  ePvtKey    String?
-
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  image   String?
+  role    Role?
+  address String  @unique
 }
 
 enum Role {
-  ADMIN
   MANUFACTURER
   DISTRIBUTOR
   DOCTOR

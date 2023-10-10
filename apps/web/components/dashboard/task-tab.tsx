@@ -1,4 +1,3 @@
-import { promises as fs } from "fs";
 import path from "path";
 import Image from "next/image";
 import { z } from "zod";
@@ -7,13 +6,60 @@ import { columns } from "@/components/dashboard/tasks/columns";
 import { DataTable } from "@/components/dashboard/tasks/data-table";
 import { taskSchema } from "@/components/dashboard/tasks/schema";
 
-// Simulate a database read for tasks.
 async function getTasks() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "./components/dashboard/tasks/data.json"),
-  );
-
-  const tasks = JSON.parse(data.toString());
+  const tasks = [
+    {
+      "id": "123456",
+      "patientName": "Rajesh Kumar",
+      "patientId": "AAB1234567",
+      "injectedBy": "Dr. Priya Sharma",
+      "dateTime": "2023-10-10 14:30"
+    },
+    {
+      "id": "789012",
+      "patientName": "Sneha Patel",
+      "patientId": "XYZ9876543",
+      "injectedBy": "Dr. Rahul Verma",
+      "dateTime": "2023-10-11 11:15"
+    },
+    {
+      "id": "345678",
+      "patientName": "Preeti Sharma",
+      "patientId": "PQR4567890",
+      "injectedBy": "Dr. Akash Gupta",
+      "dateTime": "2023-10-12 09:45"
+    },
+    {
+      "id": "987654",
+      "patientName": "Amit Saxena",
+      "patientId": "LMN6543210",
+      "injectedBy": "Dr. Neha Singh",
+      "dateTime": "2023-10-13 16:20"
+    },
+    {
+      "id": "234567",
+      "patientName": "Manish Verma",
+      "patientId": "JKL5678901",
+      "injectedBy": "Dr. Anjali Kapoor",
+      "dateTime": "2023-10-14 13:10"
+    },
+    {
+      "id": "345678",
+      "patientName": "Neha Sharma",
+      "patientId": "XYZ9876543",
+      "injectedBy": "Dr. Rajesh Gupta",
+      "dateTime": "2023-10-15 10:45"
+    },
+    {
+      "id": "456789",
+      "patientName": "Deepak Yadav",
+      "patientId": "MNO2345678",
+      "injectedBy": "Dr. Preeti Sharma",
+      "dateTime": "2023-10-16 19:15"
+    }
+  ]
+  
+  
 
   return z.array(taskSchema).parse(tasks);
 }

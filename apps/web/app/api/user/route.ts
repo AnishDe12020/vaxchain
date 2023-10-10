@@ -51,16 +51,16 @@ export async function PUT(req: NextRequest) {
     process.env.SECRET_KEY as string,
   );
 
-  const user = await prisma.user.update({
-    where: {
-      email: session?.user?.email as string,
-    },
-    data: {
-      role,
-      publicKey: kp.publicKey.toString(),
-      ePvtKey,
-    },
-  });
+  // const user = await prisma.user.update({
+  //   where: {
+  //     email: session?.user?.email as string,
+  //   },
+  //   data: {
+  //     role,
+  //     publicKey: kp.publicKey.toString(),
+  //     ePvtKey,
+  //   },
+  // });
 
-  return NextResponse.json({ updated: true, user });
+  return NextResponse.json({ updated: true });
 }
