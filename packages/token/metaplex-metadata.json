@@ -2,6 +2,5 @@
   "name": "VAXChain",
   "symbol": "VAX",
   "description": "The official token fo Vaxchain to be used for staking, rewards and buying vaccines",
-  "uri": "https://shdw-drive.genesysgo.net/7hGk2s1CD632W1Ty9ahyXXzx9Ya8arLEmCveZHZuoY4A/metadata.json",
-  "seller_fee_basis_points": 0
+  "image": "https://raw.githubusercontent.com/AnishDe12020/vaxchain/main/packages/token/icon.png"
 }
