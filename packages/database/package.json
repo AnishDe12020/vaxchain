@@ -7,7 +7,8 @@
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "dev": "pnpm prisma studio --port 5556"
+    "dev": "pnpm prisma studio --port 5556",
+    "prepare": "prisma generate"
   },
   "keywords": [],
   "author": "",
