@@ -1,5 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { getServerSession } from "next-auth/next"
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,12 +9,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { getServerSession } from "next-auth/next";
-import { Logout } from "./logout-item";
+} from "@/components/ui/dropdown-menu"
+
+import { Logout } from "./logout-item"
 
 export async function UserNav() {
-  const session = await getServerSession();
+  const session = await getServerSession()
 
   return (
     <DropdownMenu>
@@ -48,5 +50,5 @@ export async function UserNav() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

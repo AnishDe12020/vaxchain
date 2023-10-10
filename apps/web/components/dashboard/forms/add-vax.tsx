@@ -1,4 +1,8 @@
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useFieldArray, useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -6,16 +10,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/card"
 import {
   Form,
   FormControl,
@@ -24,11 +19,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useFieldArray, useForm } from "react-hook-form";
-import * as z from "zod";
-import { DatePicker } from "./date-picker";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+import { DatePicker } from "./date-picker"
 
 async function handleSubmit() {}
 
@@ -51,12 +53,12 @@ const profileFormSchema = z.object({
     .array(
       z.object({
         value: z.string().url({ message: "Please enter a valid URL." }),
-      }),
+      })
     )
     .optional(),
-});
+})
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
@@ -65,14 +67,14 @@ const defaultValues: Partial<ProfileFormValues> = {
     { value: "https://shadcn.com" },
     { value: "http://twitter.com/shadcn" },
   ],
-};
+}
 
 export function AddVaxForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
     mode: "onChange",
-  });
+  })
 
   return (
     <Card className="w-[720px]">
@@ -127,5 +129,5 @@ export function AddVaxForm() {
         </CardFooter>
       </Form>
     </Card>
-  );
+  )
 }

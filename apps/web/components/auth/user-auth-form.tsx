@@ -1,29 +1,29 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
+import { signIn } from "next-auth/react"
 
-import { cn } from "@/lib/utils";
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const handleGoogleLogin = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       signIn("google", {
         callbackUrl: "/role?auth=true",
-      });
+      })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <Button
@@ -60,7 +60,7 @@ const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
         Apple
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default UserAuthForm;
+export default UserAuthForm

@@ -1,29 +1,30 @@
-import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "database";
-import { Keypair } from "@solana/web3.js";
-import { getServerSession } from "next-auth/next";
-import { encryptWithAES } from "@/lib/crypto";
+import { NextRequest, NextResponse } from "next/server"
+import { Keypair } from "@solana/web3.js"
+import { prisma } from "database"
+import { getServerSession } from "next-auth/next"
+
+import { encryptWithAES } from "@/lib/crypto"
 
 export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email") as string;
+  const { searchParams } = new URL(req.url)
+  const email = searchParams.get("email") as string
 
   if (!email || email === "")
-    return NextResponse.json({ error: true, message: "Email is required" });
+    return NextResponse.json({ error: true, message: "Email is required" })
 
-  const session = await getServerSession();
+  const session = await getServerSession()
 
   const user = await prisma.user.findUnique({
     where: {
       email,
     },
-  });
+  })
 
-  return NextResponse.json({ user, session: session?.user?.name });
+  return NextResponse.json({ user, session: session?.user?.name })
 }
 
 export async function POST(req: NextRequest) {
-  const { providerId, email, name, image } = await req.json();
+  const { providerId, email, name, image } = await req.json()
   try {
     const user = await prisma.user.create({
       data: {
@@ -32,24 +33,24 @@ export async function POST(req: NextRequest) {
         name,
         image,
       },
-    });
+    })
 
-    return NextResponse.json({ user });
+    return NextResponse.json({ user })
   } catch (error) {
-    console.log("create user error >> ", error);
-    return NextResponse.json({ error });
+    console.log("create user error >> ", error)
+    return NextResponse.json({ error })
   }
 }
 
 export async function PUT(req: NextRequest) {
-  const { role } = await req.json();
-  const session = await getServerSession();
+  const { role } = await req.json()
+  const session = await getServerSession()
 
-  const kp = Keypair.generate();
+  const kp = Keypair.generate()
   const ePvtKey = encryptWithAES(
     kp.secretKey.toString(),
-    process.env.SECRET_KEY as string,
-  );
+    process.env.SECRET_KEY as string
+  )
 
   // const user = await prisma.user.update({
   //   where: {
@@ -62,5 +63,5 @@ export async function PUT(req: NextRequest) {
   //   },
   // });
 
-  return NextResponse.json({ updated: true });
+  return NextResponse.json({ updated: true })
 }

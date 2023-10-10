@@ -1,30 +1,32 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import UserRoleSelect from "@/components/auth/user-role-select";
-import ModeToggle from "@/components/ui/mode-toggle";
-import { AuthButton } from "@/components/auth/auth-button";
+import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth"
+
+import ModeToggle from "@/components/ui/mode-toggle"
+import { AuthButton } from "@/components/auth/auth-button"
+import UserRoleSelect from "@/components/auth/user-role-select"
+
 const Role = async ({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }) => {
-  const session = await getServerSession();
+  const session = await getServerSession()
 
   if (session && !searchParams.auth) {
-    return redirect("/dashboard");
+    return redirect("/dashboard")
   } else if (!session && !searchParams.auth) {
-    return redirect("/auth");
+    return redirect("/auth")
   } else {
     const getUser = await (
       await fetch(
-        `${process.env.NEXTAUTH_URL}/api/user?email=${session?.user?.email}`,
+        `${process.env.NEXTAUTH_URL}/api/user?email=${session?.user?.email}`
       )
-    ).json();
+    ).json()
 
     if (getUser?.user?.role) {
-      return redirect("/dashboard");
+      return redirect("/dashboard")
     } else
       return (
         <>
@@ -64,8 +66,8 @@ const Role = async ({
             </div>
           </div>
         </>
-      );
+      )
   }
-};
+}
 
-export default Role;
+export default Role

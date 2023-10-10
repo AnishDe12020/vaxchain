@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function RecentInjected() {
   const data = [
@@ -56,7 +56,7 @@ export function RecentInjected() {
       avatarInitials: "VR",
       time: "6:40 PM",
     },
-  ];
+  ]
 
   return (
     <div className="space-y-8">
@@ -74,5 +74,5 @@ export function RecentInjected() {
         </div>
       ))}
     </div>
-  );
+  )
 }

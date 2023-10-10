@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-import { signOut } from "next-auth/react";
-import React from "react";
+import React from "react"
+import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu"
+import { signOut } from "next-auth/react"
 
 export const Logout = () => {
   return (
@@ -15,5 +15,5 @@ export const Logout = () => {
     >
       Log out
     </DropdownMenuItem>
-  );
-};
+  )
+}

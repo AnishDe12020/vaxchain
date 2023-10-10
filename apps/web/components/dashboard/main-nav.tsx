@@ -1,11 +1,12 @@
-import { cn } from "@/lib/utils";
-import { getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth/next"
+
+import { cn } from "@/lib/utils"
 
 export async function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
-  const session = await getServerSession();
+  const session = await getServerSession()
   return (
     <nav
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
@@ -37,5 +38,5 @@ export async function MainNav({
       </Link> */}
       <h1 className="text-2xl font-medium">Welcome, {session?.user?.name}</h1>
     </nav>
-  );
+  )
 }

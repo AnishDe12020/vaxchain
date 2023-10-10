@@ -1,11 +1,14 @@
-"use client";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { buttonVariants } from "../ui/button";
-import { cn } from "@/lib/utils";
+"use client"
+
+import Link from "next/link"
+import { signOut, useSession } from "next-auth/react"
+
+import { cn } from "@/lib/utils"
+
+import { buttonVariants } from "../ui/button"
 
 export const AuthButton = () => {
-  const session = useSession();
+  const session = useSession()
   return (
     <>
       {session.data?.user ? (
@@ -18,7 +21,7 @@ export const AuthButton = () => {
           }
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8",
+            "absolute right-4 top-4 md:right-8 md:top-8"
           )}
         >
           Logout
@@ -31,12 +34,12 @@ export const AuthButton = () => {
           href="/auth"
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8",
+            "absolute right-4 top-4 md:right-8 md:top-8"
           )}
         >
           Login
         </Link>
       )}
     </>
-  );
-};
+  )
+}

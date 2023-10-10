@@ -1,17 +1,15 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import * as React from "react";
+import * as React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site";
-
-import { Icons } from "@/components/icons";
-import { cn } from "@/lib/utils";
-
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
 
 export const DesktopNav = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <div className="hidden mr-4 md:flex">
@@ -33,5 +31,5 @@ export const DesktopNav = () => {
         </Link>
       </nav>
     </div>
-  );
-};
+  )
+}

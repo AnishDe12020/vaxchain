@@ -1,5 +1,3 @@
 export default function DashboardPage() {
-  return (
-    <p>dashy</p>
-  )
+  return <p>dashy</p>
 }

@@ -1,21 +1,23 @@
-import "./globals.css";
-import NextTopLoader from "nextjs-toploader";
-import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
-import { SolanaProvider } from "@/components/wrappers/SolanaProvider";
-import SessionProviderWrapper from "@/components/wrappers/SessionProvider";
-import Toaster from "@/components/wrappers/SonnerToaster";
-import { Header } from "@/components/layout/Header";
+import "./globals.css"
+
+import type { Metadata } from "next"
+import NextTopLoader from "nextjs-toploader"
+
+import { Header } from "@/components/layout/Header"
+import { ThemeProvider } from "@/components/theme-provider"
+import SessionProviderWrapper from "@/components/wrappers/SessionProvider"
+import { SolanaProvider } from "@/components/wrappers/SolanaProvider"
+import Toaster from "@/components/wrappers/SonnerToaster"
 
 export const metadata: Metadata = {
   title: "Vaxchain App",
   description: "vaccine supply chain built on solana",
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -23,7 +25,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SolanaProvider>
             <SessionProviderWrapper>
-            <Header />
+              <Header />
               <NextTopLoader
                 color="#ffffff"
                 initialPosition={0.08}
@@ -42,5 +44,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

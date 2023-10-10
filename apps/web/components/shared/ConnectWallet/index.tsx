@@ -1,85 +1,84 @@
-"use client";
+"use client"
 
-import { useWallet } from "@solana/wallet-adapter-react";
-import { LinkIcon, UnlinkIcon, WalletIcon } from "lucide-react";
 import {
-  HTMLAttributes,
   forwardRef,
+  HTMLAttributes,
   useCallback,
   useMemo,
   useState,
-} from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
-import base58 from "bs58";
+} from "react"
+import { truncatePubkey } from "@/utils/truncate"
+import { useWallet } from "@solana/wallet-adapter-react"
+import axios from "axios"
+import base58 from "bs58"
+import { LinkIcon, UnlinkIcon, WalletIcon } from "lucide-react"
+import { signIn, signOut, useSession } from "next-auth/react"
+import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { truncatePubkey } from "@/utils/truncate";
-import axios from "axios";
-import { Icons } from "@/components/icons";
-import { toast } from "sonner";
+} from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
 interface ConnectWalletProps extends HTMLAttributes<HTMLButtonElement> {
-  onlyConnect?: boolean;
+  onlyConnect?: boolean
 }
 
 export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
   ({ onlyConnect, children, ...props }, ref) => {
     const { wallets, select, publicKey, disconnect, connect, signMessage } =
-      useWallet();
-    const { status } = useSession();
+      useWallet()
+    const { status } = useSession()
 
-    const [isSigningIn, setIsSigningIn] = useState(false);
+    const [isSigningIn, setIsSigningIn] = useState(false)
 
     const login = useCallback(async () => {
-      setIsSigningIn(true);
-      const res = await axios.get("/api/nonce");
+      setIsSigningIn(true)
+      const res = await axios.get("/api/nonce")
 
       if (res.status != 200) {
-        console.error("failed to fetch nonce");
-        return;
+        console.error("failed to fetch nonce")
+        return
       }
 
-      const { nonce } = res.data;
+      const { nonce } = res.data
 
-      const message = `Sign this message for authenticating with your wallet. Nonce: ${nonce}`;
-      const encodedMessage = new TextEncoder().encode(message);
+      const message = `Sign this message for authenticating with your wallet. Nonce: ${nonce}`
+      const encodedMessage = new TextEncoder().encode(message)
 
       if (!signMessage) {
-        console.error("signMessage is not defined");
-        return;
+        console.error("signMessage is not defined")
+        return
       }
 
-      const signedMessage = await signMessage(encodedMessage);
+      const signedMessage = await signMessage(encodedMessage)
 
       try {
         await signIn("credentials", {
           publicKey: publicKey?.toBase58(),
           signature: base58.encode(signedMessage),
           callbackUrl: `${window.location.origin}/${window.location.pathname}`,
-        });
+        })
       } catch (e) {
-        console.error(e);
-        toast.error("Failed to sign in");
+        console.error(e)
+        toast.error("Failed to sign in")
       }
 
-      setIsSigningIn(false);
-    }, [signMessage, publicKey]);
+      setIsSigningIn(false)
+    }, [signMessage, publicKey])
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const availableWallets = useMemo(
       () =>
@@ -89,12 +88,12 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
             wallet.readyState === "Loadable"
         ),
       [wallets]
-    );
+    )
 
     const disconenctWallet = () => {
-      disconnect();
-      signOut();
-    };
+      disconnect()
+      signOut()
+    }
 
     return status === "loading" ? (
       <Icons.spinner className="w-4 h-4 mr-2 animate-spin" />
@@ -153,12 +152,12 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
                 <Button
                   key={wallet.adapter.name}
                   onClick={(e) => {
-                    select(wallet.adapter.name);
+                    select(wallet.adapter.name)
 
                     if (!e.defaultPrevented) {
                       connect().catch((e) => {
-                        console.error(e);
-                      });
+                        console.error(e)
+                      })
                     }
                   }}
                   variant="secondary"
@@ -177,8 +176,8 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
           )}
         </DialogContent>
       </Dialog>
-    );
+    )
   }
-);
+)
 
-ConnectWallet.displayName = "ConnectWallet";
+ConnectWallet.displayName = "ConnectWallet"

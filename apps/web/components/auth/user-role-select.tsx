@@ -1,10 +1,14 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { redirect } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
+import { useSession } from "next-auth/react"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Form,
   FormControl,
@@ -13,19 +17,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useSession } from "next-auth/react";
-import { Checkbox } from "@/components/ui/checkbox";
-
-import axios from "axios";
-import { redirect } from "next/navigation";
+} from "@/components/ui/select"
 
 const FormSchema = z.object({
   role: z.string({
@@ -34,12 +33,12 @@ const FormSchema = z.object({
   toc: z.boolean({
     required_error: "Please accept the terms and conditions.",
   }),
-});
+})
 
 const UserRoleSelect = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-  });
+  })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     axios
@@ -47,12 +46,12 @@ const UserRoleSelect = () => {
         role: data.role,
       })
       .then((res) => {
-        console.log(res);
-        window.location.href = "/dashboard";
+        console.log(res)
+        window.location.href = "/dashboard"
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.log(err)
+      })
   }
 
   return (
@@ -109,7 +108,7 @@ const UserRoleSelect = () => {
         </div>
       </form>
     </Form>
-  );
-};
+  )
+}
 
-export default UserRoleSelect;
+export default UserRoleSelect

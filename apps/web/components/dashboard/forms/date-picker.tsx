@@ -1,5 +1,5 @@
-import DatePickerWithRange from "@/components/dashboard/forms/date-picker-with-range";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/ui/label"
+import DatePickerWithRange from "@/components/dashboard/forms/date-picker-with-range"
 
 export function DatePicker() {
   return (
@@ -13,5 +13,5 @@ export function DatePicker() {
     </div>
     //   </CardContent>
     // </Card>
-  );
+  )
 }

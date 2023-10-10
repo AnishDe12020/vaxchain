@@ -1,28 +1,25 @@
-"use client";
+"use client"
 
-import Link from "next/link";
+import Link from "next/link"
+import Avvvatars from "avvvatars-react"
+import { LogOutIcon } from "lucide-react"
 
-import { siteConfig } from "@/config/site";
-
-import { Icons } from "@/components/icons";
-import { ConnectWallet } from "@/components/shared/ConnectWallet";
-import { Button, buttonVariants } from "@/components/ui/button";
-
-
-import { DesktopNav } from "./Desktop";
-import { MobileNav } from "./Mobile";
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { LogOutIcon } from "lucide-react";
-import Avvvatars from "avvvatars-react";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
+import { ConnectWallet } from "@/components/shared/ConnectWallet"
+
+import { DesktopNav } from "./Desktop"
+import { MobileNav } from "./Mobile"
 
 export const Header = () => {
-
   return (
     <header className="sticky top-0 z-40 justify-between w-full border-b shadow-sm supports-backdrop-blur:bg-background/60 bg-background/75 backdrop-blur">
       <div className="container flex items-center h-14">
@@ -52,11 +49,9 @@ export const Header = () => {
             </div>
 
             <ConnectWallet />
-
-          
           </nav>
         </div>
       </div>
     </header>
-  );
-};
+  )
+}

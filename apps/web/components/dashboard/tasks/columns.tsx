@@ -1,10 +1,12 @@
-"use client";
+"use client"
 
-import { ColumnDef } from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Task } from "./schema";
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
+import { ColumnDef } from "@tanstack/react-table"
+
+import { Checkbox } from "@/components/ui/checkbox"
+
+import { DataTableColumnHeader } from "./data-table-column-header"
+import { DataTableRowActions } from "./data-table-row-actions"
+import { Task } from "./schema"
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -85,4 +87,4 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
-];
+]

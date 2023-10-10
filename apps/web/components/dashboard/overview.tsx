@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
 const data = [
   {
@@ -63,7 +63,7 @@ const data = [
     temp: 25,
     hum: 72,
   },
-];
+]
 
 export function Overview() {
   return (
@@ -87,5 +87,5 @@ export function Overview() {
         <Line type="monotone" dataKey="hum" stroke="#adaa1d" />
       </LineChart>
     </ResponsiveContainer>
-  );
+  )
 }

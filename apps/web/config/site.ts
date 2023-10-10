@@ -7,6 +7,6 @@ export const siteConfig = {
     twitter: "https://twitter.com/vaxchain",
     github: "https://github.com/AnishDe12020/vaxchain",
   },
-};
+}
 
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof siteConfig
