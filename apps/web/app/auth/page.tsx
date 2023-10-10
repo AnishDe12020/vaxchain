@@ -1,4 +1,5 @@
 import UserAuthForm from "@/components/auth/user-auth-form"
+import { ConnectWallet } from "@/components/shared/ConnectWallet"
 
 export const Auth = async () => {
   return (
@@ -8,13 +9,11 @@ export const Auth = async () => {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                Create an account
+                Authenticate with your wallet
               </h1>
-              <p className="text-sm text-muted-foreground">
-                Use your google workspace to create an account
-              </p>
             </div>
-            <UserAuthForm />
+
+            <ConnectWallet />
           </div>
         </div>
       </div>
