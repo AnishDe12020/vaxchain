@@ -10,6 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BatchStatus {
+  Manufactured
+  StoredByDistributor
+  ReceivedByDoctor
+}
+
+enum Role {
+  MANUFACTURER
+  DISTRIBUTOR
+  DOCTOR
+}
+
 model User {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
@@ -20,8 +32,51 @@ model User {
   address String  @unique
 }
 
-enum Role {
-  MANUFACTURER
-  DISTRIBUTOR
-  DOCTOR
+model Batch {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name          String
+  pubkey        String      @unique
+  manufacturer  String
+  distributor   String?
+  expiresAt     DateTime
+  quantity      Int
+  tempMin       Int
+  tempMax       Int
+  costPerPiece  Int
+  status        BatchStatus
+  tempDefect    Boolean     @default(false)
+  startDate     DateTime?
+  stopDate      DateTime?
+  latestTempLog String?
+
+  TempLog TempLog[]
+  Vaccine Vaccine[]
+}
+
+model TempLog {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  batch     Batch    @relation(fields: [batchId], references: [id])
+  timestamp DateTime
+  temp      Int
+  pubkey    String
+  batchId   String
+}
+
+model Vaccine {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pubkey  String    @unique
+  batch   Batch     @relation(fields: [batchId], references: [id])
+  batchId String
+  used    Boolean   @default(false)
+  usedBy  String?
+  usedAt  DateTime?
 }
