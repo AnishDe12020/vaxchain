@@ -1,6 +1,6 @@
-import { log } from "console";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { redirect } from "next/navigation";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -10,13 +10,10 @@ export const options: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      log("signIn cb >> ", { user, account, profile, email, credentials });
-
-      // check if user is new and if new redirect to roles else log user in
-      return true;
-    },
+    // async signIn({ user }) {
+    // },
   },
+
   pages: {
     signIn: "/auth",
   },
