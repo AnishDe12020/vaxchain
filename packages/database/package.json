@@ -7,7 +7,7 @@
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "dev": "pnpm prisma studio --port 5556",
+    "studio": "pnpm prisma studio --port 5556",
     "prepare": "prisma generate"
   },
   "keywords": [],
@@ -15,9 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^16.3.1",
-    "prisma": "^5.3.1"
+    "prisma": "^5.4.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.3.1"
+    "@prisma/client": "^5.4.2"
   }
 }
