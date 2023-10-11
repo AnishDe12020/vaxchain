@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation"
-import { prisma } from "database"
+import { prisma, Role } from "database"
 import { getServerSession } from "next-auth"
 
 import { Button } from "@/components/ui/button"
+import Batches from "@/components/dashboard/tables/batches"
 
 const DashboardPage = async () => {
   const session = await getServerSession()
@@ -11,21 +12,29 @@ const DashboardPage = async () => {
     redirect("/auth")
   }
 
-  const user = await prisma.batch.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
-      pubkey: session?.user.name,
+      address: session?.user.name,
     },
   })
 
-  const batches = await prisma.batch.findMany({
-    where: {},
-  })
+  let batches
 
-  return (
-    <div className="container relative hidden h-[900px] flex-col items-center justify-center md:grid">
-      <Button>New batch</Button>
-    </div>
-  )
+  if (user?.role === Role.DISTRIBUTOR) {
+    batches = await prisma.batch.findMany({
+      where: {
+        distributor: user?.address,
+      },
+    })
+  } else if (user?.role === Role.MANUFACTURER) {
+    batches = await prisma.batch.findMany({
+      where: {
+        manufacturer: user?.address,
+      },
+    })
+  }
+
+  return <>{batches && <Batches batches={batches} />}</>
 }
 
 export default DashboardPage
