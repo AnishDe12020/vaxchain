@@ -1,7 +1,11 @@
 "use client"
 
+import { useState } from "react"
 import { useRouter } from "next/navigation"
+import useProgram from "@/hoooks/useProgram"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useWallet } from "@solana/wallet-adapter-react"
+import { PublicKey } from "@solana/web3.js"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -25,9 +29,7 @@ import {
 } from "@/components/ui/select"
 
 const FormSchema = z.object({
-  role: z.string({
-    required_error: "Please select a role to proceed.",
-  }),
+  role: z.enum(["MANUFACTURER", "DISTRIBUTOR", "DOCTOR"]),
 })
 
 const UserRoleSelect = () => {
@@ -37,18 +39,72 @@ const UserRoleSelect = () => {
 
   const router = useRouter()
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    axios
-      .put("/api/user", {
+  const { program } = useProgram()
+  const { publicKey } = useWallet()
+
+  const [isCreating, setIsCreating] = useState(false)
+
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    if (!publicKey) {
+      toast.error("Wallet not connected")
+      return
+    }
+
+    if (!program) {
+      toast.error("Program not initialized")
+      return
+    }
+
+    const userPda = PublicKey.findProgramAddressSync(
+      [Buffer.from("user"), publicKey.toBuffer()],
+      program.programId
+    )[0]
+
+    const roleArg =
+      data.role === "MANUFACTURER"
+        ? { manufacturer: {} }
+        : data.role === "DISTRIBUTOR"
+        ? { distributor: {} }
+        : { doctor: {} }
+
+    setIsCreating(true)
+
+    try {
+      const sig = await program.methods
+        .createUser(roleArg)
+        .accounts({
+          user: publicKey,
+          userPda,
+        })
+        .rpc()
+
+      console.log(sig)
+
+      await axios.put("/api/user", {
         role: data.role,
       })
-      .then(() => {
-        toast.success("Role updated")
-        router.push("/dashboard")
+
+      toast.success("User created", {
+        action: {
+          label: "View on Solscan",
+          onClick: () => {
+            window.open(
+              `https://solscan.io/tx/${sig}?cluster=devnet`,
+              "_blank",
+              "noopener noreferrer"
+            )
+          },
+        },
       })
-      .catch(() => {
-        toast.error("Something went wrong")
-      })
+
+      setIsCreating(false)
+
+      router.push("/dashboard")
+    } catch (err) {
+      setIsCreating(false)
+      console.error(err)
+      toast.error("Something went wrong")
+    }
   }
 
   return (
@@ -79,7 +135,7 @@ const UserRoleSelect = () => {
         />
 
         <div>
-          <Button type="submit" variant="default">
+          <Button type="submit" variant="default" isLoading={isCreating}>
             Go to Dashboard
           </Button>
         </div>

@@ -47,10 +47,10 @@ export const POST = async (request: Request) => {
     return new Response("Missing required fields", { status: 400 })
   }
 
-  await prisma.batch.create({
+  const batch = await prisma.batch.create({
     data: {
       costPerPiece: body.costPerPiece,
-      expiresAt: body.expiresAt,
+      expiresAt: new Date(body.expiresAt),
       name: body.name,
       pubkey: body.pubkey,
       quantity: body.quantity,
@@ -62,18 +62,11 @@ export const POST = async (request: Request) => {
   })
 
   await prisma.vaccine.createMany({
-    data: [
-      body.vaccines.map((vaccine: any) => ({
-        pubkey: vaccine.pubkey,
-        batch: {
-          connect: {
-            where: {
-              pubkey: body.pubkey,
-            },
-          },
-        },
-      })),
-    ],
+    data: body.vaccines.map((vaccine: string) => ({
+      pubkey: vaccine,
+      batchId: batch.id,
+    })),
+    skipDuplicates: true,
   })
 
   return new Response("OK", { status: 200 })
