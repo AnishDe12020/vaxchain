@@ -1,7 +1,15 @@
-import UserAuthForm from "@/components/auth/user-auth-form"
+import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth"
+
 import { ConnectWallet } from "@/components/shared/ConnectWallet"
 
 export const Auth = async () => {
+  const session = await getServerSession()
+
+  if (session?.user?.name) {
+    redirect("/dashboard")
+  }
+
   return (
     <>
       <div className="container relative hidden h-[900px] flex-col items-center justify-center md:grid">
