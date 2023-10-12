@@ -1,5 +1,6 @@
-import { prisma } from "database"
 import { getServerSession } from "next-auth"
+
+import { prisma } from "@/lib/db"
 
 export const GET = async (
   _: Request,

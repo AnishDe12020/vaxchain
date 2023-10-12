@@ -1,4 +1,4 @@
-import { prisma } from "database"
+import { prisma } from "@/lib/db"
 
 export const GET = async (
   _: Request,

@@ -1,9 +1,7 @@
 import { redirect } from "next/navigation"
-import { prisma } from "database"
 import { getServerSession } from "next-auth"
 
-import ModeToggle from "@/components/ui/mode-toggle"
-import { AuthButton } from "@/components/auth/auth-button"
+import { prisma } from "@/lib/db"
 import UserRoleSelect from "@/components/auth/user-role-select"
 
 const Role = async () => {

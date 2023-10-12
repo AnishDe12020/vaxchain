@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation"
-import { prisma, Role } from "database"
+import { Role } from "database"
 import { getServerSession } from "next-auth"
 
+import { prisma } from "@/lib/db"
 import { Button } from "@/components/ui/button"
 import Batches from "@/components/dashboard/tables/batches"
 
