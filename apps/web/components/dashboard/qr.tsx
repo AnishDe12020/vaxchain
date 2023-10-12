@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { RefObject, useEffect, useRef } from "react"
 import QRCodeStyling from "@solana/qr-code-styling"
 
 export const createQR = (
@@ -27,9 +27,13 @@ export const createQR = (
   })
 }
 
-const QRCode = ({ content }: { content: string }) => {
-  const qrRef = useRef<HTMLDivElement>(null)
-
+const QRCode = ({
+  content,
+  qrRef,
+}: {
+  content: string
+  qrRef: RefObject<HTMLDivElement>
+}) => {
   useEffect(() => {
     const qr = createQR(content, 256)
 
