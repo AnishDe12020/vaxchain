@@ -1,10 +1,11 @@
 import { IncomingMessage } from "http"
 import { NextRequest } from "next/server"
 import bs58 from "bs58"
-import { prisma } from "database"
 import type { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import nacl from "tweetnacl"
+
+import { prisma } from "@/lib/db"
 
 export const options = (req: NextRequest): NextAuthOptions => {
   return {
@@ -37,6 +38,8 @@ export const options = (req: NextRequest): NextAuthOptions => {
           }
 
           const user = { name: credentials.publicKey }
+
+          console.log(user)
 
           const profile = await prisma.user.findUnique({
             where: {
