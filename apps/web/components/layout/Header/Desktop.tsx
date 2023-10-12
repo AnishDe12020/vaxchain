@@ -29,6 +29,18 @@ export const DesktopNav = () => {
         >
           Dashboard
         </Link>
+
+        <Link
+          href="/dashboard/airdrop"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/dashboard/airdrop"
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Airdrop
+        </Link>
       </nav>
     </div>
   )

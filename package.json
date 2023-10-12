@@ -12,5 +12,9 @@
     "tsconfig": "workspace:*",
     "turbo": "latest"
   },
-  "name": "vaxchain"
+  "name": "vaxchain",
+  "dependencies": {
+    "@solana/web3.js": "^1.87.1",
+    "bs58": "^5.0.0"
+  }
 }
