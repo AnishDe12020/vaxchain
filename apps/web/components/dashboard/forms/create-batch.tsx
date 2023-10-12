@@ -182,7 +182,7 @@ const CreateBatchForm = () => {
         vaccines: vaccines.map((v) => v.vaccine.toBase58()),
       })
 
-      await router.push(`/dashboard/batch/${batchKey.toBase58()}`)
+      router.push(`/dashboard/batch/${batchKey.toBase58()}`)
 
       toast.success("Batch and vaccines created")
       setIsCreating(false)

@@ -8,7 +8,7 @@ export const GET = async (
     where: {
       pubkey: params.pubkey,
     },
-    select: {
+    include: {
       Vaccine: true,
       TempLog: true,
     },

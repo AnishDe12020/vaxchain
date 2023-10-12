@@ -13,7 +13,7 @@ import { PublicKey } from "@solana/web3.js"
 import axios from "axios"
 import { toast } from "sonner"
 
-import { TOKEN_MINT } from "@/lib/constants"
+import { TOKEN_DECIMALS, TOKEN_MINT } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
 
 const AirdropPage = () => {
@@ -54,15 +54,17 @@ const AirdropPage = () => {
 
         const accountData = await getAccount(connection, ata)
 
-        setBalance(Number(accountData.amount.toString()))
+        setBalance(Number(accountData.amount.toString()) / 10 ** TOKEN_DECIMALS)
         setIsLoadingBalance(false)
       } catch (error) {
         if (
           error instanceof TokenAccountNotFoundError ||
           error instanceof TokenInvalidAccountOwnerError
         ) {
+          setIsLoadingBalance(false)
           setBalance(0)
         } else {
+          setBalance(0)
           console.error(error)
           toast.error("Error fetching balance")
           setIsLoadingBalance(false)

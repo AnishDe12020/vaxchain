@@ -156,6 +156,9 @@ importers:
       react-hook-form:
         specifier: ^7.47.0
         version: 7.47.0(react@18.2.0)
+      react-qr-reader:
+        specifier: ^2.2.1
+        version: 2.2.1(react-dom@18.2.0)(react@18.2.0)
       recharts:
         specifier: ^2.8.0
         version: 2.8.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
@@ -193,6 +196,9 @@ importers:
       '@types/react-dom':
         specifier: latest
         version: 18.2.12
+      '@types/react-qr-reader':
+        specifier: ^2.1.5
+        version: 2.1.5
       autoprefixer:
         specifier: latest
         version: 10.4.16(postcss@8.4.31)
@@ -4483,12 +4489,26 @@ packages:
     dependencies:
       '@types/react': 18.2.27
 
+  /@types/react-qr-reader@2.1.5:
+    resolution: {integrity: sha512-a21g42lQkBKr87zS0idEkTsnVB/UObQol9RcB7YTkLokz3bwwDVJqnXaOliITIAfZtQAYpsPAj08Mb9G2U8K4A==}
+    dependencies:
+      '@types/react': 18.2.28
+    dev: true
+
   /@types/react@18.2.27:
     resolution: {integrity: sha512-Wfv7B7FZiR2r3MIqbAlXoY1+tXm4bOqfz4oRr+nyXdBqapDBZ0l/IGcSlAfvxIHEEJjkPU0MYAc/BlFPOcrgLw==}
     dependencies:
       '@types/prop-types': 15.7.8
       '@types/scheduler': 0.16.4
       csstype: 3.1.2
+
+  /@types/react@18.2.28:
+    resolution: {integrity: sha512-ad4aa/RaaJS3hyGz0BGegdnSRXQBkd1CCYDCdNjBPg90UUpLgo+WlJqb9fMYUxtehmzF3PJaTWqRZjko6BRzBg==}
+    dependencies:
+      '@types/prop-types': 15.7.8
+      '@types/scheduler': 0.16.4
+      csstype: 3.1.2
+    dev: true
 
   /@types/scheduler@0.16.4:
     resolution: {integrity: sha512-2L9ifAGl7wmXwP4v3pN4p2FLhD0O1qsJpvKmNin5VA8+UvNVb447UDaAEV6UdrkA+m/Xs58U1RFps44x6TFsVQ==}
@@ -9977,6 +9997,19 @@ packages:
       prop-types: 15.8.1
       react: 16.13.1
       react-dom: 16.13.1(react@16.13.1)
+      webrtc-adapter: 7.7.1
+    dev: false
+
+  /react-qr-reader@2.2.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EL5JEj53u2yAOgtpAKAVBzD/SiKWn0Bl7AZy6ZrSf1lub7xHwtaXe6XSx36Wbhl1VMGmvmrwYMRwO1aSCT2fwA==}
+    peerDependencies:
+      react: ~16
+      react-dom: ~16
+    dependencies:
+      jsqr: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
       webrtc-adapter: 7.7.1
     dev: false
 

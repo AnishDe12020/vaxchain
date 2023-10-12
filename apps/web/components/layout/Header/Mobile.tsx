@@ -46,11 +46,11 @@ export const MobileNav = () => {
           </MobileLink>
 
           <MobileLink
-            href="/wallet"
+            href="/dashboard/airdrop"
             className="transition-colors hover:text-foreground/80"
             onOpenChange={setOpen}
           >
-            Wallet
+            Airdrop
           </MobileLink>
         </nav>
       </SheetContent>

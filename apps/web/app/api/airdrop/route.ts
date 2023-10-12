@@ -3,7 +3,7 @@ import { getOrCreateAssociatedTokenAccount, mintTo } from "@solana/spl-token"
 import { Connection, Keypair, PublicKey } from "@solana/web3.js"
 import { getServerSession } from "next-auth"
 
-import { TOKEN_MINT } from "@/lib/constants"
+import { TOKEN_DECIMALS, TOKEN_MINT } from "@/lib/constants"
 
 export const POST = async () => {
   const session = await getServerSession()
@@ -39,7 +39,7 @@ export const POST = async () => {
     new PublicKey(TOKEN_MINT),
     userAta.address,
     airdropKeypair,
-    10000
+    10000 * 10 ** TOKEN_DECIMALS
   )
 
   await connection.confirmTransaction(sig)
