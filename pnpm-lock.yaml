@@ -72,6 +72,9 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@solana/qr-code-styling':
+        specifier: ^1.6.0
+        version: 1.6.0
       '@solana/spl-token':
         specifier: ^0.3.8
         version: 0.3.8(@solana/web3.js@1.87.1)(encoding@0.1.13)
@@ -3434,6 +3437,12 @@ packages:
     engines: {node: '>=5.10'}
     dependencies:
       buffer: 6.0.3
+    dev: false
+
+  /@solana/qr-code-styling@1.6.0:
+    resolution: {integrity: sha512-KyBmyFKPxQPhUkP0jjnxV2ZeF1R1guTD8Hrd0YvHvMnhtrNEoEEdv4Jpp4W0GN4qCGG2KYOM5d3TgoLD+CNf9Q==}
+    dependencies:
+      qrcode-generator: 1.4.4
     dev: false
 
   /@solana/spl-token@0.3.8(@solana/web3.js@1.87.1)(encoding@0.1.13):
@@ -9730,6 +9739,10 @@ packages:
 
   /qr.js@0.0.0:
     resolution: {integrity: sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==}
+    dev: false
+
+  /qrcode-generator@1.4.4:
+    resolution: {integrity: sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==}
     dev: false
 
   /qrcode.react@1.0.1(react@16.13.1):

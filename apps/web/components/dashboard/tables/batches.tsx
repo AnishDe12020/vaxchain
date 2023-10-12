@@ -121,6 +121,7 @@ const Batches = ({ batches }: { batches: Batch[] }) => {
               <TableHead>Public Key</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Defect</TableHead>
+              <TableHead />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -131,15 +132,17 @@ const Batches = ({ batches }: { batches: Batch[] }) => {
                   {batch.quantity} x {batch.costPerPiece} ={" "}
                   {batch.quantity * batch.costPerPiece}
                 </TableCell>
-                <TableCell className="flex gap-2">
-                  {`${batch.tempMin - 273}°C`}{" "}
-                  <ArrowRightIcon className="w-4 h-4" />
-                  {`${batch.tempMax - 273}°C`}
+                <TableCell>
+                  <div className="flex gap-2 items-center">
+                    {`${batch.tempMin - 273}°C`}{" "}
+                    <ArrowRightIcon className="w-4 h-4" />
+                    {`${batch.tempMax - 273}°C`}
+                  </div>
                 </TableCell>
                 <TableCell className="w-fit">
                   {truncatePubkey(batch.pubkey)}
                   <Button
-                    size="sm"
+                    size="xs"
                     variant="outline"
                     className="ml-2"
                     onClick={() => {
@@ -165,6 +168,14 @@ const Batches = ({ batches }: { batches: Batch[] }) => {
                   ) : (
                     <Badge className="bg-green-500">No defect</Badge>
                   )}
+                </TableCell>
+                <TableCell>
+                  <Link
+                    href={`/dashboard/batch/${batch.pubkey}`}
+                    className={buttonVariants({ size: "sm" })}
+                  >
+                    View
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}

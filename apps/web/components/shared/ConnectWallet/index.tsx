@@ -130,7 +130,7 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
           )}
         </DialogTrigger>
 
-        <DialogContent className="w-96">
+        <DialogContent className="w-48">
           <DialogHeader>
             <DialogTitle>Connect Wallet</DialogTitle>
           </DialogHeader>
@@ -148,30 +148,36 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
             </div>
           ) : (
             <div className="flex flex-col gap-4">
-              {availableWallets.map((wallet) => (
-                <Button
-                  key={wallet.adapter.name}
-                  onClick={(e) => {
-                    select(wallet.adapter.name)
+              {availableWallets.length > 0 ? (
+                availableWallets.map((wallet) => (
+                  <Button
+                    key={wallet.adapter.name}
+                    onClick={(e) => {
+                      select(wallet.adapter.name)
 
-                    if (!e.defaultPrevented) {
-                      connect().catch((e) => {
-                        console.error(e)
-                      })
-                    }
-                  }}
-                  variant="secondary"
-                  className="justify-start"
-                  size="lg"
-                >
-                  <img
-                    className="w-5 h-5 mr-4"
-                    src={wallet.adapter.icon}
-                    alt={wallet.adapter.name}
-                  />
-                  <span>{wallet.adapter.name}</span>
-                </Button>
-              ))}
+                      if (!e.defaultPrevented) {
+                        connect().catch((e) => {
+                          console.error(e)
+                        })
+                      }
+                    }}
+                    variant="secondary"
+                    className="justify-start"
+                    size="lg"
+                  >
+                    <img
+                      className="w-5 h-5 mr-4"
+                      src={wallet.adapter.icon}
+                      alt={wallet.adapter.name}
+                    />
+                    <span>{wallet.adapter.name}</span>
+                  </Button>
+                ))
+              ) : (
+                <p className="text-sm text-gray-300">
+                  No wallets installed. Please install a wallet to continue.
+                </p>
+              )}
             </div>
           )}
         </DialogContent>
