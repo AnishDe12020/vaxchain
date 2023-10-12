@@ -42,6 +42,7 @@ model Batch {
   pubkey        String      @unique
   manufacturer  String
   distributor   String?
+  doctor        String?
   expiresAt     DateTime
   quantity      Int
   tempMin       Int

@@ -33,6 +33,12 @@ const DashboardPage = async () => {
         manufacturer: user?.address,
       },
     })
+  } else {
+    batches = await prisma.batch.findMany({
+      where: {
+        doctor: user?.address,
+      },
+    })
   }
 
   return <>{batches && <Batches batches={batches} />}</>

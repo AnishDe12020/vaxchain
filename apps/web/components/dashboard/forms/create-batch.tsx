@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import useProgram from "@/hoooks/useProgram"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { BN } from "@project-serum/anchor"
@@ -57,6 +58,8 @@ const CreateBatchForm = () => {
   const { connection } = useConnection()
 
   const [isCreating, setIsCreating] = useState(false)
+
+  const router = useRouter()
 
   const onSubmit = async (values: CreateBatchFormValues) => {
     console.log(values)
@@ -178,6 +181,8 @@ const CreateBatchForm = () => {
         quantity: values.quantity,
         vaccines: vaccines.map((v) => v.vaccine.toBase58()),
       })
+
+      await router.push(`/dashboard/batch/${batchKey.toBase58()}`)
 
       toast.success("Batch and vaccines created")
       setIsCreating(false)

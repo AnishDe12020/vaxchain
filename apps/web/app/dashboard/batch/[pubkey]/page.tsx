@@ -3,7 +3,6 @@ import { truncatePubkey } from "@/utils/truncate"
 
 import { prisma } from "@/lib/db"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import QRModal from "@/components/dashboard/qr-modal"
 
 const BatchPage = async ({
@@ -64,6 +63,17 @@ const BatchPage = async ({
             <div className="flex gap-2 items-center">
               <p>{truncatePubkey(batch.distributor)}</p>
               <QRModal content={batch.distributor} />
+            </div>
+          ) : (
+            <span>-</span>
+          )}
+        </div>
+        <div className="flex gap-2 items-center">
+          Doctor:
+          {batch.doctor ? (
+            <div className="flex gap-2 items-center">
+              <p>{truncatePubkey(batch.doctor)}</p>
+              <QRModal content={batch.doctor} />
             </div>
           ) : (
             <span>-</span>
