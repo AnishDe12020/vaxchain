@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import useProgram from "@/hoooks/useProgram"
+import { calculateDays, calculateRefrigerationCost } from "@/utils/calc"
 import {
   createAssociatedTokenAccount,
   createAssociatedTokenAccountInstruction,
@@ -17,7 +18,7 @@ import { Role } from "database"
 import QrReader from "react-qr-reader"
 import { toast } from "sonner"
 
-import { STAKE_PER_PIECE, TOKEN_MINT } from "@/lib/constants"
+import { STAKE_PER_PIECE, TOKEN_DECIMALS, TOKEN_MINT } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -107,7 +108,8 @@ const BuyForm = ({ role }: { role: Role }) => {
 
           if (
             Number(distributorATAAccount.amount.toString()) <
-            Number(batch.data.quantity) * Number(batch.data.costPerPiece) +
+            (Number(batch.data.quantity) * Number(batch.data.costPerPiece)) /
+              10 ** TOKEN_DECIMALS +
               Number(batch.data.quantity) * STAKE_PER_PIECE
           ) {
             toast.error("Insufficient VAX", {
@@ -172,12 +174,100 @@ const BuyForm = ({ role }: { role: Role }) => {
         await axios.post("/api/batch/buy/distributor", {
           batch: batchAddress,
         })
+      } else {
+        const doctorATA = getAssociatedTokenAddressSync(
+          new PublicKey(TOKEN_MINT),
+          publicKey
+        )
 
-        toast.success("VAX bought")
-        setIsBuying(false)
+        const numOfDays = calculateDays(
+          new Date(batch.data.startDate),
+          new Date()
+        )
 
-        router.push(`/dashboard/batch/${batchKey.toBase58()}`)
+        try {
+          const doctorATAAccount = await getAccount(connection, doctorATA)
+
+          console.log(Number(doctorATAAccount.amount.toString()))
+          console.log(
+            Number(batch.data.quantity) * Number(batch.data.costPerPiece) +
+              calculateRefrigerationCost(numOfDays, batch.data.tempMax) *
+                Number(batch.data.quantity)
+          )
+
+          if (
+            Number(doctorATAAccount.amount.toString()) / 10 ** TOKEN_DECIMALS <
+            Number(batch.data.quantity) * Number(batch.data.costPerPiece) +
+              Number(batch.data.quantity) * STAKE_PER_PIECE
+          ) {
+            toast.error("Insufficient VAX", {
+              description: (
+                <p>
+                  Go to <Link href="/dashboard/airdrop">the airdrop page</Link>{" "}
+                  to get some VAX
+                </p>
+              ),
+            })
+            setIsBuying(true)
+            return
+          }
+        } catch (err) {
+          toast.error("Token account doesn't exist", {
+            description: (
+              <p>
+                Go to <Link href="/dashboard/airdrop">the airdrop page</Link> to
+                get some VAX
+              </p>
+            ),
+          })
+          setIsBuying(true)
+          return
+        }
+
+        const distributorATA = getAssociatedTokenAddressSync(
+          new PublicKey(TOKEN_MINT),
+          new PublicKey(batch.data.distributor)
+        )
+
+        let preIxs = []
+
+        try {
+          await getAccount(connection, distributorATA)
+        } catch (err) {
+          preIxs.push(
+            createAssociatedTokenAccountInstruction(
+              publicKey,
+              distributorATA,
+              new PublicKey(batch.data.distributor),
+              new PublicKey(TOKEN_MINT)
+            )
+          )
+        }
+
+        await program.methods
+          .doctorReceive()
+          .accounts({
+            batch: batchKey,
+            batchPda,
+            user: publicKey,
+            userPda,
+            vault: vaultPda,
+            mint: new PublicKey(TOKEN_MINT),
+            doctorTokenAccount: doctorATA,
+            distributorTokenAccount: distributorATA,
+          })
+          .preInstructions(preIxs)
+          .rpc()
+
+        await axios.post("/api/batch/buy/doctor", {
+          batch: batchAddress,
+        })
       }
+
+      toast.success("Batch bought")
+      setIsBuying(false)
+
+      router.push(`/dashboard/batch/${batchKey.toBase58()}`)
     } catch (e) {
       setIsBuying(false)
       toast.error("Error buying batch")
