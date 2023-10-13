@@ -1,6 +1,12 @@
 import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes"
-import { getOrCreateAssociatedTokenAccount, mintTo } from "@solana/spl-token"
-import { Connection, Keypair, PublicKey } from "@solana/web3.js"
+import {
+  createAssociatedTokenAccountInstruction,
+  getAccount,
+  getAssociatedTokenAddressSync,
+  getOrCreateAssociatedTokenAccount,
+  mintTo,
+} from "@solana/spl-token"
+import { Connection, Keypair, PublicKey, Transaction } from "@solana/web3.js"
 import { getServerSession } from "next-auth"
 
 import { TOKEN_DECIMALS, TOKEN_MINT } from "@/lib/constants"
@@ -22,24 +28,43 @@ export const POST = async () => {
 
   const connection = new Connection(process.env.NEXT_PUBLIC_RPC!)
 
-  console.log(session.user.name)
-
-  const userAta = await getOrCreateAssociatedTokenAccount(
-    connection,
-    airdropKeypair,
+  const userATA = getAssociatedTokenAddressSync(
     new PublicKey(TOKEN_MINT),
     new PublicKey(session.user.name)
   )
 
-  console.log(userAta)
+  try {
+    await getAccount(connection, userATA)
+  } catch (err) {
+    const transaction = new Transaction().add(
+      createAssociatedTokenAccountInstruction(
+        airdropKeypair.publicKey,
+        userATA,
+        new PublicKey(session.user.name),
+        new PublicKey(TOKEN_MINT)
+      )
+    )
+
+    const sig = await connection.sendTransaction(transaction, [airdropKeypair])
+
+    await connection.confirmTransaction(sig, "confirmed")
+
+    console.log("Created ATA", sig)
+  }
+
+  console.log(userATA)
 
   const sig = await mintTo(
     connection,
     airdropKeypair,
     new PublicKey(TOKEN_MINT),
-    userAta.address,
+    userATA,
     airdropKeypair,
-    10000 * 10 ** TOKEN_DECIMALS
+    10000 * 10 ** TOKEN_DECIMALS,
+    undefined,
+    {
+      skipPreflight: true,
+    }
   )
 
   await connection.confirmTransaction(sig)
