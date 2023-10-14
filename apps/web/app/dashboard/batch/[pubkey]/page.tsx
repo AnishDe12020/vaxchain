@@ -3,6 +3,7 @@ import { truncatePubkey } from "@/utils/truncate"
 
 import { prisma } from "@/lib/db"
 import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import QRModal from "@/components/dashboard/qr-modal"
 
 const BatchPage = async ({
@@ -18,6 +19,7 @@ const BatchPage = async ({
     },
     include: {
       Vaccine: true,
+      TempLog: true,
     },
   })
 
@@ -85,18 +87,39 @@ const BatchPage = async ({
         <p>Total Price: {batch.quantity * batch.costPerPiece}</p>
       </div>
 
-      <div className="flex flex-col gap-2 mt-4">
-        {batch.Vaccine.map((vaccine) => (
-          <div
-            className="border rounded-lg bg-card py-2 px-3 flex items-center justify-between"
-            key={vaccine.id}
-          >
-            <span>{vaccine.pubkey}</span>
+      <Tabs defaultValue="vaccines">
+        <TabsList className="mt-4">
+          <TabsTrigger value="vaccines">Vaccines</TabsTrigger>
+          <TabsTrigger value="temp-logs">Temperature Logs</TabsTrigger>
+        </TabsList>
+        <TabsContent value="vaccines">
+          <div className="flex flex-col gap-2 mt-4 border rounded-lg bg-card p-4">
+            {batch.Vaccine.map((vaccine) => (
+              <div
+                className="border rounded-lg bg-card py-2 px-3 flex items-center justify-between"
+                key={vaccine.id}
+              >
+                <span>{vaccine.pubkey}</span>
 
-            <QRModal content={vaccine.pubkey} />
+                <QRModal content={vaccine.pubkey} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </TabsContent>
+        <TabsContent value="temp-logs">
+          <div className="flex flex-col gap-2 mt-4 border rounded-lg bg-card p-4">
+            {batch.TempLog.map((tempLog) => (
+              <div
+                className="border rounded-lg bg-card py-2 px-3 flex items-center justify-between"
+                key={tempLog.id}
+              >
+                <span>{tempLog.temp - 273}°C</span>
+                <span>{new Date(tempLog.timestamp).toLocaleString()}</span>
+              </div>
+            ))}
+          </div>
+        </TabsContent>
+      </Tabs>
     </>
   )
 }
