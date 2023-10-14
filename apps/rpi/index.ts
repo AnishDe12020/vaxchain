@@ -73,7 +73,7 @@ cron.schedule("* * * * *", async () => {
   }
 
   if (batch.TempLog.length > 0) {
-    lastTempLog = new PublicKey(batch.TempLog[batch.TempLog.length - 1].pubkey);
+    lastTempLog = new PublicKey(batch.TempLog[0].pubkey);
     lastTempLogPda = PublicKey.findProgramAddressSync(
       [Buffer.from("temp_log"), BATCH.toBuffer(), lastTempLog.toBuffer()],
       program.programId

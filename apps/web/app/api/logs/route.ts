@@ -16,7 +16,6 @@ export const POST = async (request: Request) => {
         orderBy: {
           timestamp: "desc",
         },
-        take: 1,
       },
     },
   })

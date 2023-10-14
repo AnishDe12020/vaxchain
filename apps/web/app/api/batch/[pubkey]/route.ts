@@ -14,7 +14,6 @@ export const GET = async (
         orderBy: {
           timestamp: "desc",
         },
-        take: 1,
       },
     },
   })

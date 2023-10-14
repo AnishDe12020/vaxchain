@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx index.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,12 @@
     "@solana/web3.js": "^1.87.1",
     "axios": "^1.5.1",
     "bs58": "^5.0.0",
-    "dotenv": "^16.3.1"
+    "database": "workspace:*",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.9",
+    "tsx": "^3.13.0"
   }
 }
