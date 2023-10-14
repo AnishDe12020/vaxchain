@@ -1,26 +1,19 @@
 {
-  "name": "rpi",
+  "name": "cron",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node-cron": "^3.0.9",
-    "@types/node-dht-sensor": "^0.4.0",
-    "tsx": "^3.13.0"
-  },
   "dependencies": {
     "@project-serum/anchor": "^0.26.0",
     "@solana/web3.js": "^1.87.1",
     "axios": "^1.5.1",
     "bs58": "^5.0.0",
-    "dotenv": "^16.3.1",
-    "node-cron": "^3.0.2",
-    "node-dht-sensor": "^0.4.3"
+    "dotenv": "^16.3.1"
   }
 }

@@ -10,7 +10,12 @@ export const GET = async (
     },
     include: {
       Vaccine: true,
-      TempLog: true,
+      TempLog: {
+        orderBy: {
+          timestamp: "desc",
+        },
+        take: 1,
+      },
     },
   })
 
