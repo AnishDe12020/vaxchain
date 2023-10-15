@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth"
 
 import { ConnectWallet } from "@/components/shared/ConnectWallet"
 
-export const Auth = async () => {
+const Auth = async () => {
   const session = await getServerSession()
 
   if (session?.user?.name) {
