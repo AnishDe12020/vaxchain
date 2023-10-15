@@ -25,7 +25,7 @@ export const Header = () => {
       <div className="container flex items-center h-14">
         <DesktopNav />
         <MobileNav />
-        <div className="flex items-center justify-end flex-1 space-x-2 sm:space-x-4">
+        <div className="flex items-center justify-end space-x-2 sm:space-x-4">
           <nav className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <Link
@@ -48,7 +48,7 @@ export const Header = () => {
               </Link>
             </div>
 
-            <ConnectWallet />
+            <ConnectWallet>GET STARTED</ConnectWallet>
           </nav>
         </div>
       </div>

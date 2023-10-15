@@ -111,7 +111,7 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
               <DropdownMenuContent>
                 <DropdownMenuItem
                   onClick={disconenctWallet}
-                  className="text-destructive"
+                  className="text-red-500"
                 >
                   <UnlinkIcon className="w-4 h-4 mr-2" />
                   <span>Disconenct Wallet</span>
@@ -119,7 +119,12 @@ export const ConnectWallet = forwardRef<HTMLButtonElement, ConnectWalletProps>(
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button ref={ref} {...props}>
+            <Button
+              ref={ref}
+              {...props}
+              variant="secondary"
+              className="text-blue-300 border border-blue-300 border-opacity-60"
+            >
               {children ?? (
                 <>
                   <LinkIcon className="w-4 h-4 mr-2" />

@@ -12,34 +12,23 @@ export const DesktopNav = () => {
   const pathname = usePathname()
 
   return (
-    <div className="hidden mr-4 md:flex">
+    <div className="hidden mr-4 md:flex flex-1">
       <Link href="/" className="flex items-center mr-6 space-x-2">
-        <Icons.logo className="w-6 h-6" />
-        <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
+        <Icons.logomark className="h-6" />
       </Link>
-      <nav className="flex items-center space-x-6 text-sm font-medium">
+      <nav className="flex items-center space-x-6 text-sm font-medium justify-end w-full">
         <Link
           href="/dashboard"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/dashboard" ? "text-foreground" : "text-foreground/60"
-          )}
+          className={cn("transition-colors hover:text-foreground/80")}
         >
-          Dashboard
+          DASHBOARD
         </Link>
 
         <Link
           href="/dashboard/airdrop"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/dashboard/airdrop"
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
+          className={cn("transition-colors hover:text-foreground/80")}
         >
-          Airdrop
+          AIRDROP
         </Link>
       </nav>
     </div>
