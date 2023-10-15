@@ -246,6 +246,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.0
         version: 4.1.0(prettier@3.0.3)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.4.2
+        version: 5.4.2
       '@types/cookie':
         specifier: ^0.5.2
         version: 0.5.2
@@ -2571,6 +2574,10 @@ packages:
   /@prisma/engines@5.4.2:
     resolution: {integrity: sha512-fqeucJ3LH0e1eyFdT0zRx+oETLancu5+n4lhiYECyEz6H2RDskPJHJYHkVc0LhkU4Uv7fuEnppKU3nVKNzMh8g==}
     requiresBuild: true
+
+  /@prisma/nextjs-monorepo-workaround-plugin@5.4.2:
+    resolution: {integrity: sha512-fs4g2hys6TUG49pr6TRRT9wNHaCf4fqr8kben3QOCa8GBBHmX+N/hGVpjYCi1wOeVLVeFJIUYR61CWWudJymtQ==}
+    dev: true
 
   /@project-serum/anchor@0.26.0(encoding@0.1.13):
     resolution: {integrity: sha512-Nq+COIjE1135T7qfnOHEn7E0q39bQTgXLFk837/rgFe6Hkew9WML7eHsS+lSYD2p3OJaTiUOHTAq1lHy36oIqQ==}

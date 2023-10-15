@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@prisma/nextjs-monorepo-workaround-plugin": "^5.4.2",
     "@types/cookie": "^0.5.2",
     "@types/crypto-js": "^4.1.2",
     "@types/node": "latest",
