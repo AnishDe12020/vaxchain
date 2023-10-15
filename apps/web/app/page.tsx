@@ -88,7 +88,7 @@ export default function Home() {
             built for speed, security and transparency
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 flex py-6">
+        <div className="col-span-1 row-span-2 px-6 mb-1 flex py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               01.
@@ -119,7 +119,7 @@ export default function Home() {
             </svg>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 border-t flex border-r py-6">
+        <div className="col-span-1 row-span-2 px-6 border-t flex border-r py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 border-t flex border-r py-6">
+        <div className="col-span-1 row-span-2 px-6 border-t flex border-r py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
