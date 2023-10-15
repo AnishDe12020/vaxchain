@@ -9,7 +9,7 @@ import Map from "@/components/map"
 export default function Home() {
   return (
     <div className="px-28 py-14 mt-12 flex flex-col max-w-[96rem] justify-center items-center mx-auto">
-      <div className="flex justify-between gap-32">
+      <div className="flex justify-between gap-32 w-full">
         <div className="flex flex-col gap-2">
           <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase">
             Vaccines
