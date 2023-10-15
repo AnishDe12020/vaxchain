@@ -69,8 +69,8 @@ export default function Home() {
         </Marquee>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-7 mt-24 w-full">
-        <div className="col-span-1 row-span-3 pr-6 pl-2 md:pl-6 justify-start items-center md:border-r">
+      <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-14 mt-24 w-full">
+        <div className="col-span-1 row-span-3 pr-6 pl-2 md:pl-6 justify-start items-center">
           <div className="px-3 py-2 rounded-full border border-white border-opacity-25 justify-start items-start gap-2.5 inline-flex">
             <div className="text-blue-300 text-xs font-normal font-['Helvetica Neue'] uppercase italic">
               features
@@ -80,7 +80,7 @@ export default function Home() {
             built for speed, security and transparency
           </div>
         </div>
-        <div className="col-span-1 row-span-2 px-2 md:px-6 mb-1 flex py-6">
+        <div className="col-span-1 row-span-2 px-2 md:px-6 mb-1 flex py-6 md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               01.
@@ -94,7 +94,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-5 pl-6 justify-center items-center md:border-t pt-6 hidden md:flex">
+        <div className="col-span-1 row-span-5 pl-6 justify-center items-center md:border-t pt-6 hidden md:flex md:border-l">
           <div className="flex-col justify-center items-center gap-2.5 inline-flex">
             {/* <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ export default function Home() {
             </svg> */}
           </div>
         </div>
-        <div className="col-span-1 row-span-2 px-2 md:px-6 md:border-t flex md:border-r py-6">
+        <div className="col-span-1 row-span-2 px-2 md:px-6 md:border-t flex py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
@@ -124,7 +124,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 px-2 md:px-6 md:border-t flex md:border-r py-6">
+        <div className="col-span-1 row-span-2 px-2 md:px-6 md:border-t flex py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
@@ -137,10 +137,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-6 grid-rows-7 mt-24 w-full">
-        <div className="grid col-span-3 row-span-6 justify-start items-start py-6">
+        <div className="grid col-span-1 row-span-6 justify-start items-start py-6 md:border-t pt-16">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="px-3 py-2 rounded-full border border-white border-opacity-25 justify-start items-start gap-2.5 inline-flex">
               <div className="text-blue-300 text-xs font-normal font-['Helvetica Neue'] uppercase italic">
@@ -156,7 +154,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-2 md:px-6">
+        <div className="grid col-span-1 row-span-1 justify-start items-center py-6 px-2 md:px-6 md:border-t pt-16 md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               01.
@@ -168,7 +166,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-2 md:px-6 md:border-t">
+        <div className="grid col-span-1 row-span-1 justify-start items-center py-6 px-2 md:px-6 md:border-t md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
@@ -180,7 +178,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-2 md:px-6 md:border-t">
+        <div className="grid col-span-1 row-span-1 justify-start items-center py-6 px-2 md:px-6 md:border-t md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
@@ -193,7 +191,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-2 md:px-6 md:border-t">
+        <div className="grid col-span-1 row-span-1 justify-start items-center py-6 px-2 md:px-6 md:border-t md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               04.
@@ -205,7 +203,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-2 md:px-6 md:border-t">
+        <div className="grid col-span-1 row-span-1 justify-start items-center py-6 px-2 md:px-6 md:border-t md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               05.
@@ -217,7 +215,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-2 justify-start items-center md:border-l px-2 md:px-6 md:border-t">
+        <div className="grid col-span-1 row-span-2 justify-start items-center px-2 md:px-6 md:border-t md:border-l">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="flex">
               <div className="flex flex-col gap-4 pr-2 md:border-r py-6">
