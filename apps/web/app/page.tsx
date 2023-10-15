@@ -88,17 +88,17 @@ export default function Home() {
             built for speed, security and transparency
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 justify-center items-stretch flex py-6">
-          <div className="flex-col justify-center items-end gap-2.5 inline-flex">
-            <div className="self-stretch text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
+        <div className="col-span-1 row-span-2 pl-6 flex py-6">
+          <div className="flex-col justify-start items-start gap-2.5 inline-flex">
+            <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               01.
             </div>
-            <div className="self-stretch text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
+            <div className="text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
               temperature monitoring
             </div>
-            <div className="self-stretch text-white text-xl font-normal font-['Helvetica Neue']">
-              Temperature monitoring to make sure vaccines are stored in optimal
-              conditions.
+            <div className="text-white text-xl font-normal font-['Helvetica Neue']">
+              Temperature of the environment in which the vaccines are stored is
+              monitored to ensure optimal storage conditions
             </div>
           </div>
         </div>
@@ -119,29 +119,29 @@ export default function Home() {
             </svg>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 border-t justify-center items-stretch flex border-r py-6">
-          <div className="flex-col justify-center items-end gap-2.5 inline-flex">
-            <div className="self-stretch text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
+        <div className="col-span-1 row-span-2 pl-6 border-t flex border-r py-6">
+          <div className="flex-col justify-start items-start gap-2.5 inline-flex">
+            <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
             </div>
-            <div className="self-stretch text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
-              authenticity verification
+            <div className="text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
+              authenticity
             </div>
-            <div className="self-stretch text-white text-2xl font-normal font-['Helvetica Neue']">
-              Blockchain based vaccine tracking of ensure authenticity.
+            <div className="text-white text-xl font-normal font-['Helvetica Neue']">
+              Blockchain based vaccine tracking ensures authenticity of vaccines
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 pl-6 border-t justify-center items-stretch flex border-r py-6">
-          <div className="flex-col justify-center items-end gap-2.5 inline-flex">
-            <div className="self-stretch text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
+        <div className="col-span-1 row-span-2 pl-6 border-t flex border-r py-6">
+          <div className="flex-col justify-start items-start gap-2.5 inline-flex">
+            <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
             </div>
-            <div className="self-stretch text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
+            <div className="text-white text-2xl font-normal font-['Helvetica Neue'] uppercase mt-2">
               reward system
             </div>
-            <div className="self-stretch text-white text-2xl font-normal font-['Helvetica Neue']">
-              Distributors are rewarded for successful storage of vaccines.
+            <div className="text-white text-xl font-normal font-['Helvetica Neue']">
+              Distributors are rewarded for successful storage of vaccines
             </div>
           </div>
         </div>
