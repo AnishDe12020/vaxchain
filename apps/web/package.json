@@ -48,6 +48,7 @@
     "react": "latest",
     "react-day-picker": "^8.8.2",
     "react-dom": "latest",
+    "react-fast-marquee": "^1.6.2",
     "react-hook-form": "^7.47.0",
     "react-qr-reader": "^2.2.1",
     "recharts": "^2.8.0",
