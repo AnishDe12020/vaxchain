@@ -8,30 +8,30 @@ import Map from "@/components/map"
 
 export default function Home() {
   return (
-    <div className="px-28 py-14 mt-12 flex flex-col max-w-[96rem] justify-center items-center mx-auto">
-      <div className="flex justify-between gap-32 w-full">
+    <div className="px-8 md:px-16 py-14 mt-12 flex flex-col max-w-[96rem] justify-center items-center mx-auto">
+      <div className="flex justify-between gap-16 md:gap-32 w-full md:flex-row flex-col">
         <div className="flex flex-col gap-2">
-          <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase">
+          <span className="text-white text-5xl md:text-8xl font-light font-['Helvetica Neue'] uppercase">
             Vaccines
           </span>
-          <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase">
+          <span className="text-white text-5xl md:text-8xl font-light font-['Helvetica Neue'] uppercase">
             for a
           </span>
-          <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase italic">
+          <span className="text-white text-5xl md:text-8xl font-light font-['Helvetica Neue'] uppercase italic">
             brighter
           </span>
-          <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase italic">
+          <span className="text-white text-5xl md:text-8xl font-light font-['Helvetica Neue'] uppercase italic">
             tomorrow
           </span>
         </div>
-        <div className="flex-col justify-end items-start gap-5 flex">
+        <div className="flex-col justify-end gap-5 flex">
           <div className="text-white text-2xl font-normal font-['Helvetica Neue'] w-64">
             Safe, efficient, and rewarding vaccine storage with DePIN and IoT on
             Solana.
           </div>
           <Link
             href="/auth"
-            className={buttonVariants({ className: "font-bold" })}
+            className={buttonVariants({ className: "font-bold w-fit" })}
           >
             <span className="font-bold">GET STARTED</span>
             <svg
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-9 pb-1 py-2 bg-white shadow border border-zinc-900 justify-start items-start gap-2.5 inline-flex w-screen mt-32 overflow-x-hidden">
+      <div className="h-9 pb-1 py-2 bg-white shadow md:border md:border-zinc-900 justify-start items-start gap-2.5 inline-flex w-screen mt-16 md:mt-32 overflow-x-hidden">
         <Marquee
           className="text-black font-normal text-sm font-['Helvetica Neue'] uppercase whitespace-nowrap overflow-x-hidden"
           autoFill
@@ -69,14 +69,14 @@ export default function Home() {
         </Marquee>
       </div>
 
-      <div className="grid grid-cols-2 grid-rows-7 mt-24 w-full">
-        <div className="col-span-1 row-span-3 pr-6 pl-6 justify-start items-center border-r">
+      <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-7 mt-24 w-full">
+        <div className="col-span-1 row-span-3 pr-6 pl-4 md:pl-6 justify-start items-center md:border-r">
           <div className="px-3 py-2 rounded-full border border-white border-opacity-25 justify-start items-start gap-2.5 inline-flex">
             <div className="text-blue-300 text-xs font-normal font-['Helvetica Neue'] uppercase italic">
               features
             </div>
           </div>
-          <div className="text-white text-[3rem] leading-none font-light font-['Helvetica Neue'] uppercase mt-6 mb-8">
+          <div className="text-white text-4xl md:text-[3rem] leading-none font-light font-['Helvetica Neue'] uppercase mt-6 mb-8">
             built for speed, security and transparency
           </div>
         </div>
@@ -94,9 +94,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-5 pl-6 justify-center items-center flex border-t pt-6">
+        <div className="col-span-1 row-span-5 pl-6 justify-center items-center md:border-t pt-6 hidden md:flex">
           <div className="flex-col justify-center items-center gap-2.5 inline-flex">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="385"
               height="384"
@@ -108,10 +108,10 @@ export default function Home() {
                 stroke="white"
                 stroke-width="4"
               />
-            </svg>
+            </svg> */}
           </div>
         </div>
-        <div className="col-span-1 row-span-2 px-6 border-t flex border-r py-6">
+        <div className="col-span-1 row-span-2 px-6 md:border-t flex md:border-r py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
@@ -124,7 +124,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 row-span-2 px-6 border-t flex border-r py-6">
+        <div className="col-span-1 row-span-2 px-6 md:border-t flex md:border-r py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
@@ -139,10 +139,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-6 grid-rows-7 mt-24 w-full">
+      <div className="grid grid-cols-3 md:grid-cols-6 grid-rows-7 mt-24 w-full">
         <div className="grid col-span-3 row-span-6 justify-start items-start py-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
-            <div className="px-3 py-2 rounded-full border border-white border-opacity-25 justify-start items-start gap-2.5 inline-flex">
+            <div className="px-3 py-2 rounded-full md:border md:border-white md:border-opacity-25 justify-start items-start gap-2.5 inline-flex">
               <div className="text-blue-300 text-xs font-normal font-['Helvetica Neue'] uppercase italic">
                 How it works
               </div>
@@ -152,11 +152,11 @@ export default function Home() {
               How Vaxchain enables Vaccine Distribution
             </div>
 
-            <Map />
+            <Map className="mt-16 w-[325px] h-[425px] md:w-[450px] md:h-[500px]" />
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center border-l py-6 px-6">
+        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-6">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               01.
@@ -168,7 +168,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center border-l py-6 px-6 border-t">
+        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-6 md:border-t">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               02.
@@ -180,7 +180,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center border-l py-6 px-6 border-t">
+        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-6 md:border-t">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               03.
@@ -193,7 +193,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center border-l py-6 px-6 border-t">
+        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-6 md:border-t">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               04.
@@ -205,7 +205,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-1 justify-start items-center border-l py-6 px-6 border-t">
+        <div className="grid col-span-3 row-span-1 justify-start items-center md:border-l py-6 px-6 md:border-t">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
               05.
@@ -217,15 +217,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid col-span-3 row-span-2 justify-start items-center border-l px-6 border-t">
+        <div className="grid col-span-3 row-span-2 justify-start items-center md:border-l px-6 md:border-t">
           <div className="flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="flex">
-              <div className="flex flex-col gap-4 pr-2 border-r py-6">
+              <div className="flex flex-col gap-4 pr-2 md:border-r py-6">
                 <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
                   06. a.
                 </div>
 
-                <div className="w-36 h-16 px-3 py-1 rounded border border-emerald-300 border-opacity-50 justify-between items-center inline-flex">
+                <div className="w-36 h-16 px-3 py-1 rounded md:border md:border-emerald-300 md:border-opacity-50 justify-between items-center inline-flex">
                   <div className="grow shrink basis-0 text-emerald-300 text-base font-medium font-['Helvetica Neue'] uppercase leading-none">
                     temperature within set range
                   </div>
@@ -240,7 +240,7 @@ export default function Home() {
                 <div className="text-white text-opacity-40 text-4xl font-normal font-['Helvetica Neue'] lowercase">
                   06. b.
                 </div>
-                <div className="w-36 h-16 px-3 py-1 rounded border border-red-500 border-opacity-50 justify-between items-center inline-flex">
+                <div className="w-36 h-16 px-3 py-1 rounded md:border md:border-red-500 md:border-opacity-50 justify-between items-center inline-flex">
                   <div className="grow shrink basis-0 text-red-500 text-base font-medium font-['Helvetica Neue'] uppercase leading-none">
                     TEMPERATURE OUT OF set RANGE
                   </div>
@@ -255,14 +255,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-between gap-32 mt-24 w-full">
+      <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-32 mt-24 w-full">
         <div className="flex flex-col gap-2">
-          <div className="px-3 py-2 rounded-full border border-white border-opacity-25 justify-start items-start gap-2.5 inline-flex w-fit">
+          <div className="px-3 py-2 rounded-full md:border md:border-white md:border-opacity-25 justify-start items-start gap-2.5 inline-flex w-fit">
             <div className="text-blue-300 text-xs font-normal font-['Helvetica Neue'] uppercase italic">
               join us
             </div>
           </div>
-          <span className="text-white text-8xl font-light font-['Helvetica Neue'] uppercase mt-8">
+          <span className="text-white text-5xl md:text-8xl font-light font-['Helvetica Neue'] uppercase mt-8">
             DRIVE THE CHANGE
           </span>
         </div>

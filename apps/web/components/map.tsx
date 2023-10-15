@@ -1,11 +1,9 @@
-const Map = () => (
+const Map = ({ className }: { className: string }) => (
   <svg
-    width={450}
-    height={500}
     viewBox="0 0 631 775"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="mt-16"
+    className={className}
   >
     <path
       fillRule="evenodd"

@@ -22,7 +22,7 @@ import { MobileNav } from "./Mobile"
 export const Header = () => {
   return (
     <header className="sticky top-0 z-40 justify-between w-full border-b shadow-sm supports-backdrop-blur:bg-background/60 bg-background/75 backdrop-blur">
-      <div className="container flex items-center h-14">
+      <div className="container flex items-center h-14 justify-between">
         <DesktopNav />
         <MobileNav />
         <div className="flex items-center justify-end space-x-2 sm:space-x-4">
